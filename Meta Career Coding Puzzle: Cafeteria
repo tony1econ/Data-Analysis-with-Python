@@ -1,0 +1,95 @@
+from typing import List
+# Write any import statements here
+
+def getMaxAdditionalDinersCount(N: int, K: int, M: int, S: List[int]) -> int:
+  additionalDiners=0
+  S.sort()
+  for i in range(0, len(S)+1):
+    if i==0:
+      additionalDiners+=(S[i]-1)//(K+1)
+      print("i==0: i=",i , additionalDiners, "additional diners")
+    elif i==len(S):
+      additionalDiners+=(N-S[-1])//(K+1)
+      print("S[i]==-1",i, additionalDiners, "additional diners")
+    else:
+      additionalDiners+=(S[i]-S[i-1]-K-1)//(K+1)
+      print("middle i=",i , additionalDiners, "additional diners") 
+  return additionalDiners
+
+
+'''
+
+A cafeteria table consists of a row of 
+𝑁
+N seats, numbered from 
+1
+1 to 
+𝑁
+N from left to right. Social distancing guidelines require that every diner be seated such that 
+𝐾
+K seats to their left and 
+𝐾
+K seats to their right (or all the remaining seats to that side if there are fewer than 
+𝐾
+K) remain empty.
+There are currently 
+𝑀
+M diners seated at the table, the 
+𝑖
+ith of whom is in seat 
+𝑆
+𝑖
+S 
+i
+​
+ . No two diners are sitting in the same seat, and the social distancing guidelines are satisfied.
+Determine the maximum number of additional diners who can potentially sit at the table without social distancing guidelines being violated for any new or existing diners, assuming that the existing diners cannot move and that the additional diners will cooperate to maximize how many of them can sit down.
+Please take care to write a solution which runs within the time limit.
+Constraints
+1
+≤
+𝑁
+≤
+1
+0
+1
+5
+1≤N≤10 
+15
+ 
+1
+≤
+𝐾
+≤
+𝑁
+1≤K≤N
+1
+≤
+𝑀
+≤
+5
+0
+0
+,
+0
+0
+0
+1≤M≤500,000
+𝑀
+≤
+𝑁
+M≤N
+1
+≤
+𝑆
+𝑖
+≤
+𝑁
+1≤S 
+i
+​
+ ≤N
+
+
+'''
+
